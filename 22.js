@@ -17,5 +17,3 @@ var generateParenthesis = function (n) {
     backtrack('', 0, 0);
     return permutations;
 };
-
-console.log(generateParenthesis(3));
