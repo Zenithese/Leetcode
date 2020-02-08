@@ -3,7 +3,7 @@
 // Memory Usage: 37.1 MB, less than 100.00 % of JavaScript online submissions for Number of Dice Rolls With Target Sum.
 
 var numRollsToTarget = function (dice, sides, target) {
-    if (dice === 0) return memo[target] = target === 0;
+    if (dice === 0) return target === 0;
 
     let rolls = 0
     for (let side = 0; side < sides; side++) {
@@ -17,14 +17,13 @@ var numRollsToTarget = function (dice, sides, target) {
 
 let memo = {}
 var memoNumRollsToTarget = function (dice, sides, target) {
-    if (memo[`${target}-${dice}`] < Infinity) return memo[`${target}-${dice}`];
+    if (`${target}-${dice}` in memo) return memo[`${target}-${dice}`];
     if (dice === 0) return memo[`${target}-${dice}`] = target === 0;
 
     let rolls = 0
     for (let side = 1; side <= sides; side++) {
-        if (side <= target) {
-            rolls = (rolls + memoNumRollsToTarget(dice - 1, sides, target - side)) % (1e9 + 7);
-        }
+        if (side > target) break;
+        rolls = (rolls + memoNumRollsToTarget(dice - 1, sides, target - side)) % (1e9 + 7);
     }
 
     return memo[`${target}-${dice}`] = rolls
