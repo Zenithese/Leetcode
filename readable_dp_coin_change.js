@@ -7,10 +7,13 @@ var coinChange = function (coins, amount) {
     for (let amt = 1; amt <= amount; amt++) {
         for (let coin of coins) {
             if (amt - coin >= 0) {
-                dp[amt] = Math.min(dp[amt], dp[amt - coin] + 1)
+                dp[amt] = Math.min(dp[amt], dp[amt - coin] + 1);
             }
         }
     };
 
     return dp[amount] === Infinity ? -1 : dp[amount];
 };
+
+console.log(coinChange([1, 2, 5], 11))
+console.log(coinChange([1, 2, 5], 11))
