@@ -23,7 +23,7 @@ var findCheapestPrice = function (n, flights, src, dst, K) {
 
             let transfers = graph[stop] || []
             for (let [transfer, marginalCost] of transfers) {
-                queue.push([transfer, cost + marginalCost])
+                queue.push([transfer, cost + marginalCost]) 
             }
         }
     }
