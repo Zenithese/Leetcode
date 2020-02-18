@@ -16,9 +16,9 @@ var minDistance = function (word1, word2) {
     for (let i = 1; i <= L1; i++) {
         for (let j = 1; j <= L2; j++) {
             theMatrix[i][j] = Math.min(
-                theMatrix[i - 1][j] + 1, // left
-                theMatrix[i][j - 1] + 1, // right
-                theMatrix[i - 1][j - 1] + (word1[i - 1] !== word2[j - 1] ? 1 : 0) // diagonal
+                theMatrix[i - 1][j] + 1, // left (delete)
+                theMatrix[i][j - 1] + 1, // right (insert)
+                theMatrix[i - 1][j - 1] + (word1[i - 1] !== word2[j - 1] ? 1 : 0) // diagonal (replace)
             );
         }
     }
