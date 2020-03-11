@@ -4,8 +4,7 @@
 
 
 var minDistance = function (word1, word2) {
-    let L1 = word1.length;
-    let L2 = word2.length;
+    let L1 = word1.length, L2 = word2.length;
     let theMatrix = Array(L1 + 1).fill(null).map(() => (Array(L2 + 1).fill(0)));
 
     for (let i = 0; i <= Math.max(L1, L2); i++) {
