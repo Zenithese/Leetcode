@@ -1,3 +1,6 @@
+// Runtime: 352 ms, faster than 15.80 % of JavaScript online submissions for Decode Ways.
+// Memory Usage: 40.4 MB, less than 14.29 % of JavaScript online submissions for Decode Ways
+
 var numDecodings = function (s, memo = {}) {
     if (memo[s]) return memo[s]
     if (s === "") return 1;
