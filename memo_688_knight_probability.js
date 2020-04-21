@@ -16,6 +16,5 @@ var knightProbability = function (N, K, r, c, memo = {}) {
         }
     };
 
-    memo[key] = count / 8
-    return memo[key]
+    return memo[key] = count / 8
 };
