@@ -17,4 +17,4 @@ var numDecodings = function (s, memo = {}) {
     return memo[s]
 };
 
-console.log(numDecodings('12332141234234298370912751072304891723048'));
+console.log(numDecodings('12121212121222121212122122121212122122122121212121212'));
