@@ -1,26 +1,37 @@
 // https://leetcode.com/problems/can-i-win/
 
 var canIWin = function (maxChoosableInteger, desiredTotal) {
-    let arr = new Array(maxChoosableInteger + 1).fill(0).map((_, i) => _ + i)
-    // if (arr.reduce((a, b) => a + b, 0) < desiredTotal) return false;
+    if (desiredTotal <= maxChoosableInteger) return true;
+    if ((1 + maxChoosableInteger) / 2 * maxChoosableInteger < desiredTotal) return false;
     
-    function recurse(arr, desiredTotal, playerOne = true) {
-        for (let i = 1; i < arr.length; i++) {
-            let num = arr[i];
-            let copy = arr.slice();
-            let difference = desiredTotal - num;
-            copy.splice(i, 1)
-            if (difference > 0) {
-                if (recurse(copy, difference, !playerOne)) {
-                    return true;
-                }
-            } else if (difference <= 0 && playerOne) {
-                return true;
+    let picked = new Array(maxChoosableInteger + 1).fill(false)
+
+    function recurse(desiredTotal, memo = {}) {
+
+        const key = picked.toString();
+        
+        if (key in memo) return memo[key];
+        
+        for (let i = 1; i <= maxChoosableInteger; i++) {
+
+            if (picked[i]) continue;
+            
+            picked[i] = true;
+            
+            const difference = desiredTotal - i
+            if (difference <= 0 || !recurse(difference, memo)) {
+                picked[i] = false
+                return memo[key] = true;
             } 
+
+            picked[i] = false
+
         }
+        
+        return memo[key] = false
     }
     
-    return recurse(arr, desiredTotal) === undefined ? false : true;
+    return recurse(desiredTotal);
 };
 
-console.log(canIWin(10, 11))
+console.log(canIWin(4, 6))
