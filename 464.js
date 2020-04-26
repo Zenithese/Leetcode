@@ -27,7 +27,7 @@ var canIWin = function (maxChoosableInteger, desiredTotal) {
             picked[i] = false
 
         }
-        
+        console.log(memo)
         return memo[key] = false
     }
     
