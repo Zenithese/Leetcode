@@ -2,23 +2,26 @@
 
 var tooSlowLastStoneWeightII = function (stones, memo = {}) {
     if (stones === []) return 0;
-    const weight = stones.sort().toString();
-    if (weight in memo) return memo[weight];
+    const weight = stones.sort();
     if (stones.length === 1) return memo[weight] = stones[0];
 
-    let weights = [];
-    for (let i = 0; i < stones.length; i++) {
-        for (let j = 0; j < stones.length; j++) {
-            if (j > i) {
-                let newStones = stones.slice(0, stones.length)
-                let newStone = Math.abs(newStones.splice(j, 1) - newStones.splice(i, 1));
-                if (newStone > 0) newStones.push(newStone);
-                weights.push(lastStoneWeightII(newStones, memo))
+
+    if (!(weight in memo)) {
+        let weights = [];
+        for (let i = 0; i < stones.length; i++) {
+            for (let j = 0; j < stones.length; j++) {
+                if (j > i) {
+                    let newStones = stones.slice()
+                    let newStone = Math.abs(newStones.splice(j, 1) - newStones.splice(i, 1));
+                    if (newStone > 0) newStones.push(newStone);
+                    weights.push(lastStoneWeightII(newStones, memo, false))
+                }
             }
         }
+        memo[weight] = Math.min(...weights);
     }
 
-    return memo[weight] = Math.min(...weights);
+    return memo[weight];
 };
 
 var destructiveLastStoneWeightII = function (stones, memo = {}, sum = 0) {
