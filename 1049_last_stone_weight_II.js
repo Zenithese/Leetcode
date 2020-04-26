@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/last-stone-weight-ii/
+
 var tooSlowLastStoneWeightII = function (stones, memo = {}) {
     if (stones === []) return 0;
     const weight = stones.sort().toString();
