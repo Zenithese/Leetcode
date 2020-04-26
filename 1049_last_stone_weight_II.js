@@ -5,7 +5,6 @@ var tooSlowLastStoneWeightII = function (stones, memo = {}) {
     const weight = stones.sort();
     if (stones.length === 1) return memo[weight] = stones[0];
 
-
     if (!(weight in memo)) {
         let weights = [];
         for (let i = 0; i < stones.length; i++) {
