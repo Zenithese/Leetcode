@@ -3,11 +3,9 @@ var mincostTickets = function (days, costs) {
     const lastDay = days[days.length - 1]
     const daysSet = new Set(days)
 
-    let dp = [0]
+    const dp = new Array(lastDay + 1).fill(0);
 
     for (let i = 1; i <= lastDay; i++) {
-
-        dp.push(Infinity);
 
         if (daysSet.has(i)) {
             dp[i] = Math.min(
