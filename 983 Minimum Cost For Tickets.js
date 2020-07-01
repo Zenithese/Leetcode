@@ -22,3 +22,36 @@ var mincostTickets = function (days, costs) {
     return dp[lastDay]
 
 };
+
+var mincostTickets = function (days, costs) {
+
+    days.unshift(0)
+
+    const dp = new Array(days.length).fill(0);
+
+    for (let i = 1; i < days.length; i++) {
+        const one = dp[i - 1] + costs[0];
+
+        let j = 1;
+        while (i - j !== 0 && days[i] - days[i - j] < 7) {
+            j++
+        }
+
+        const seven = dp[i - j] + costs[1];
+
+        while (i - j !== 0 && days[i] - days[i - j] < 30) {
+            j++
+        }
+
+        const thirty = dp[i - j] + costs[2];
+
+        dp[i] = Math.min(
+            one,
+            seven,
+            thirty
+        )
+    }
+
+    return dp.pop()
+
+};
