@@ -30,6 +30,7 @@ var mincostTickets = function (days, costs) {
     const dp = new Array(days.length).fill(0);
 
     for (let i = 1; i < days.length; i++) {
+        
         const one = dp[i - 1] + costs[0];
 
         let j = 1;
@@ -50,6 +51,7 @@ var mincostTickets = function (days, costs) {
             seven,
             thirty
         )
+        
     }
 
     return dp.pop()
