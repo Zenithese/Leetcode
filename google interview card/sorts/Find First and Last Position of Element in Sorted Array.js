@@ -5,22 +5,29 @@ var searchRange = function (nums, target) {
 
     function helper(nums, target) {
 
-        if (nums.length <= 1 && nums[0] !== target) {
-            return null
-        }
+        if (nums.length <= 1 && nums[0] !== target) return null
 
         let mid = Math.floor(nums.length / 2)
 
         if (nums[mid] === target) {
+
             while (nums[mid - 1] === target) {
+
                 mid--
+                
             }
-            return mid;
+            return mid
+
         } else if (nums[mid] > target) {
-            return helper(nums.slice(0, mid), target);
+
+            return helper(nums.slice(0, mid), target)
+
         } else {
-            const result = helper(nums.slice(mid + 1, nums.length), target);
+
+            const result = helper(nums.slice(mid + 1, nums.length), target)
+
             return result === null ? result : mid + 1 + result
+
         }
 
     }
