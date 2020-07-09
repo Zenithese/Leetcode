@@ -2,7 +2,7 @@ var searchRange = function (nums, target) {
 
     let start = -1, end = -1
 
-    function helper(nums, target) {
+    function binarySearch(nums, target) {
 
         if (nums.length <= 1 && nums[0] !== target) return null
 
@@ -16,11 +16,11 @@ var searchRange = function (nums, target) {
 
         } else if (nums[mid] > target) {
 
-            return helper(nums.slice(0, mid), target)
+            return binarySearch(nums.slice(0, mid), target)
 
         } else {
 
-            const result = helper(nums.slice(mid + 1, nums.length), target)
+            const result = binarySearch(nums.slice(mid + 1, nums.length), target)
 
             return result === null ? result : mid + 1 + result
 
@@ -28,7 +28,7 @@ var searchRange = function (nums, target) {
 
     }
 
-    const mid = helper(nums, target)
+    const mid = binarySearch(nums, target)
 
     for (let i = mid; i < nums.length; i++) {
 
