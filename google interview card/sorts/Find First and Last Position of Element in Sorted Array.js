@@ -11,11 +11,8 @@ var searchRange = function (nums, target) {
 
         if (nums[mid] === target) {
 
-            while (nums[mid - 1] === target) {
-
-                mid--
-                
-            }
+            while (nums[mid - 1] === target) mid--
+            
             return mid
 
         } else if (nums[mid] > target) {
