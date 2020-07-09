@@ -43,9 +43,9 @@ var maxPathSum = function (root) {
 
         const right = recurse(root.right)
 
-        const fork = Math.max(left[0] + root.val, right[0] + root.val, root.val)
-
         const path = left[0] + right[0] + root.val
+
+        const fork = Math.max(left[0] + root.val, right[0] + root.val, root.val)
 
         const greatest = Math.max(fork, path, left[1], right[1])
 
