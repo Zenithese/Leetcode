@@ -30,3 +30,29 @@ var maxPathSum = function (root) {
 
     return greatest
 };
+
+// cleaner
+
+var maxPathSum = function (root) {
+
+    var recurse = (root) => {
+
+        if (!root) return [-Infinity, -Infinity]
+
+        const left = recurse(root.left)
+
+        const right = recurse(root.right)
+
+        const fork = Math.max(left[0] + root.val, right[0] + root.val, root.val)
+
+        const path = left[0] + right[0] + root.val
+
+        const greatest = Math.max(fork, path, left[1], right[1])
+
+        return [fork, greatest]
+
+    }
+
+    return recurse(root)[1]
+
+};
