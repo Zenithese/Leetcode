@@ -12,7 +12,7 @@ var searchRange = function (nums, target) {
         if (nums[mid] === target) {
 
             while (nums[mid - 1] === target) mid--
-            
+
             return mid
 
         } else if (nums[mid] > target) {
@@ -34,10 +34,6 @@ var searchRange = function (nums, target) {
     for (let i = mid; i < nums.length; i++) {
 
         let num = nums[i]
-
-        if (num < target) {
-            continue
-        }
 
         if (num === target && start === -1) {
             start = i
