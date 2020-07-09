@@ -1,7 +1,6 @@
 var searchRange = function (nums, target) {
 
-    let start = -1
-    let end = -1
+    let start = -1, end = -1
 
     function helper(nums, target) {
 
@@ -35,17 +34,11 @@ var searchRange = function (nums, target) {
 
         let num = nums[i]
 
-        if (num === target && start === -1) {
-            start = i
-        }
+        if (num === target && start === -1) start = i
 
-        if (num === target) {
-            end = i
-        }
+        if (num === target) end = i
 
-        if (num > target) {
-            break
-        }
+        if (num > target) break
 
     }
 
