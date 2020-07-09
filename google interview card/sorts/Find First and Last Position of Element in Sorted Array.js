@@ -9,9 +9,12 @@ var searchRange = function (nums, target) {
             return null
         }
 
-        const mid = Math.floor(nums.length / 2)
+        let mid = Math.floor(nums.length / 2)
 
         if (nums[mid] === target) {
+            while (nums[mid - 1] === target) {
+                mid--
+            }
             return mid;
         } else if (nums[mid] > target) {
             return helper(nums.slice(0, mid), target);
@@ -22,11 +25,7 @@ var searchRange = function (nums, target) {
 
     }
 
-    let mid = helper(nums, target)
-
-    while (nums[mid - 1] === target) {
-        mid--
-    }
+    const mid = helper(nums, target)
 
     for (let i = mid; i < nums.length; i++) {
 
