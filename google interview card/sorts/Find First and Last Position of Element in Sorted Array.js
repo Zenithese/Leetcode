@@ -28,13 +28,11 @@ var searchRange = function (nums, target) {
 
     }
 
-    const mid = binarySearch(nums, target)
+    start = binarySearch(nums, target)
 
-    for (let i = mid; i < nums.length; i++) {
+    for (let i = start; i < nums.length; i++) {
 
         let num = nums[i]
-
-        if (num === target && start === -1) start = i
 
         if (num === target) end = i
 
