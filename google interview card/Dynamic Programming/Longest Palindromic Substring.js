@@ -68,20 +68,21 @@ var manachersAlgorithm = (s) => {
         if (i < end) dp[i] = Math.min(end - i, dp[mirror])
 
 
+        left = i - (1 + dp[i])
 
-        a = i + (1 + dp[i])
+        right = i + (1 + dp[i])
 
-        b = i - (1 + dp[i])
-
-        while ((b >= 0 && a + 1 < s.length) && (s[b] === s[a])) {
+        while ((left >= 0 && right + 1 < s.length) && (s[left] === s[right])) {
 
             dp[i]++
 
 
 
-            a++
+            right++
 
-            b--
+            left--
+
+            
 
             count++
 
