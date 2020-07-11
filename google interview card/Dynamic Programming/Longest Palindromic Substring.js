@@ -53,9 +53,7 @@ var manachersAlgorithm = (s) => {
     s = "|" + s.split("").join("|") + "|"
     let longest = [0, ""]
     let dp = new Array(s.length).fill(0)
-    let center = 0
-    let end = 0
-    let count = 0
+    let center = 0, end = 0, count = 0
 
 
 
@@ -68,23 +66,13 @@ var manachersAlgorithm = (s) => {
         if (i < end) dp[i] = Math.min(end - i, dp[mirror])
 
 
-        left = i - (1 + dp[i])
-
-        right = i + (1 + dp[i])
+        let left = i - (1 + dp[i]), right = i + (1 + dp[i])
 
         while ((left >= 0 && right + 1 < s.length) && (s[left] === s[right])) {
 
             dp[i]++
 
-
-
-            right++
-
-            left--
-
-            
-
-            count++
+            left--, right++, count++
 
         }
 
