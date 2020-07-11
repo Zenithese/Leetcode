@@ -61,9 +61,8 @@ var manachersAlgorithm = (s) => {
 
         count++
 
-        let mirror = (center * 2) - i
 
-        if (i < end) dp[i] = Math.min(end - i, dp[mirror])
+        if (i < end) dp[i] = Math.min(end - i, dp[(center * 2) - i])
 
 
         let left = i - (1 + dp[i]), right = i + (1 + dp[i])
@@ -76,9 +75,9 @@ var manachersAlgorithm = (s) => {
 
         }
 
-    
 
         if (dp[i] >= longest[0]) longest = [dp[i], current = s.slice(i - dp[i], i + dp[i] + 1)]
+
 
         if (i + dp[i] > end) {
 
