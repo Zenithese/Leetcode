@@ -62,7 +62,11 @@ var manachersAlgorithm = (s) => {
         count++
 
 
-        if (i < end) dp[i] = Math.min(end - i, dp[(center * 2) - i])
+        if (i < end) {
+
+            dp[i] = Math.min(end - i, dp[(center * 2) - i])
+
+        }
 
 
         let left = i - (1 + dp[i]), right = i + (1 + dp[i])
@@ -76,7 +80,11 @@ var manachersAlgorithm = (s) => {
         }
 
 
-        if (dp[i] >= longest[0]) longest = [dp[i], current = s.slice(i - dp[i], i + dp[i] + 1)]
+        if (dp[i] >= longest[0]) {
+
+            longest = [dp[i], current = s.slice(i - dp[i], i + dp[i] + 1)]
+            
+        }
 
 
         if (i + dp[i] > end) {
@@ -95,9 +103,10 @@ var manachersAlgorithm = (s) => {
 
 }
 
-console.log("O(n^2):", longestPalindrome("abaxabaxabb"))
-// console.log("O(n):", manachersAlgorithm("aaaaaaaaaaa"))
-console.log("O(n):", manachersAlgorithm("abaxabaxabb"))
+// console.log("O(n^2):", longestPalindrome("abaxabaxabb"))
+console.log("O(n^2):", longestPalindrome("aaaaaaaaaaa"))
+console.log("O(n):", manachersAlgorithm("aaaaaaaaaaa"))
+// console.log("O(n):", manachersAlgorithm("abaxabaxabb"))
 // console.log("O(n):", manachersAlgorithm("cbba"))
 // console.log("O(n):", manachersAlgorithm("aaaa"))
 // console.log("O(n):", manachersAlgorithm("aaaabaaa"))
