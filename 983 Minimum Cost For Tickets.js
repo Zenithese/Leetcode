@@ -32,7 +32,7 @@ var mincostTickets = function (days, costs) {
     for (let i = 1; i < days.length; i++) {
         
         const one = dp[i - 1] + costs[0];
-
+d
         let j = 1;
         while (i - j !== 0 && days[i] - days[i - j] < 7) {
             j++
