@@ -97,4 +97,4 @@ function getSquares(n) {
 }
 
 // console.log(numSquares(13))
-console.log(dpNumSquares(13))
+// console.log(dpNumSquares(13))
