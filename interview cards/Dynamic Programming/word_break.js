@@ -47,14 +47,32 @@ var wordBreak = function (s, wordDict) {
 
     for (let i = 0; i < s.length; i++) {
         for (let j = i + 1; j < s.length + 1; j++) {
-            const segment = s.slice(i, j)
-            if (possibleWords.has(segment)) {
+            if (possibleWords.has(s.slice(i, j))) {
                 dp[j] = dp[j] || dp[i]
             }
         }
     }
 
     return dp[s.length]
+
+};
+
+var anotherWordBreak = function (s, wordDict, index = 0, segment = "") {
+
+    const possibleWords = new Set(wordDict)
+    const dp = new Array(s.length + 1).fill(false)
+    dp[0] = true
+
+    for (let i = 1; i <= s.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (dp[j] && possibleWords.has(s.slice(j, i))) {
+                dp[i] = true;
+                break;
+            }
+        }
+    }
+
+    return dp[s.length];
 
 };
 
