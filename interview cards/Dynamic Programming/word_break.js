@@ -39,6 +39,42 @@ var recursiveWordBreak = function (s, wordDict, index = 0, segment = "") {
 
 };
 
+var memoWordBreak = function (s, wordDict, index = 0, segment = "", memo = {}) {
+
+    if (index === s.length) return segment === ""
+    if (index in memo) return memo[index]
+    const possibleWords = new Set(wordDict)
+
+    for (let i = index; i < s.length; i++) {
+        segment += s[i]
+        if (possibleWords.has(segment)) {
+            if (memoWordBreak(s, wordDict, i + 1, segment, memo)) {
+                return memo[index] = true
+            }
+            segment = ""
+        }
+    }
+
+    return memo[index] = segment === ""
+
+}
+
+var cleanerMemoWordBreak = function (s, wordDict, index = 0, memo = {}) {
+
+    if (index === s.length) return true
+    if (index in memo) return memo[index]
+    const possibleWords = new Set(wordDict)
+
+    for (let i = index; i < s.length; i++) {
+        if (possibleWords.has(s.slice(index, i + 1)) && cleanerMemoWordBreak(s, wordDict, i + 1, memo)) {
+            return memo[index] = true
+        }
+    }
+
+    return memo[index] = false
+
+}
+
 var wordBreak = function (s, wordDict) {
 
     const possibleWords = new Set(wordDict)
@@ -76,5 +112,12 @@ var anotherWordBreak = function (s, wordDict, index = 0, segment = "") {
 
 };
 
-console.log(wordBreak("aaaaaaa", ["aaaa", "aaa"]))
-// console.log(wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"]))
+// console.log(memoWordBreak("aaaaaaa", ["aaaa", "aaa"]))
+// console.log(memoWordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"]))
+
+const s ="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+const wordDict = ["a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"]
+
+console.log(memoWordBreak(s, wordDict))
+console.log(wordBreak(s, wordDict))
+console.log(anotherWordBreak(s, wordDict))
