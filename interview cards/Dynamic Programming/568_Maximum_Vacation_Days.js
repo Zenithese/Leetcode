@@ -20,11 +20,6 @@ console.log(maxVacationDays(
     [[7, 0, 4], [7, 2, 1], [2, 6, 2]]
 )) // 15
 
-// console.log(maxVacationDays(
-//     [[0, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
-//     [[0, 0, 7, 0], [2, 0, 0, 7], [7, 7, 7, 7], [7, 7, 7, 7]]
-// )) // 14
-
 var maxVacationDays2 = function (flights, days) {
 
     const dp = new Array(days.length).fill(0).map(a => new Array(days[0].length + 1).fill(0));
