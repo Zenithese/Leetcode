@@ -1,15 +1,13 @@
-var maxVacationDays = function (flights, days) { return helper(flights, days, 0) }
-
-var helper = function (flights, days, k, i = 0, memo = {}) {
+var maxVacationDays = function (flights, days, k = 0, i = 0, memo = {}) {
 
     const key = `${i}-${k}`; if (key in memo) return memo[key]; if (k === days[0].length) return 0
 
-    let trips = []
+    const trips = []
     for (let j = 0; j < flights[i].length; j++) {
-        if (flights[i][j] === 0) {
-            trips.push(days[i][k] + helper(flights, days, k + 1, i, memo))
+        if (flights[i][j]) {
+            trips.push(days[j][k] + maxVacationDays(flights, days, k + 1, j, memo))
         } else {
-            trips.push(days[j][k] + helper(flights, days, k + 1, j, memo))
+            trips.push(days[i][k] + maxVacationDays(flights, days, k + 1, i, memo))
         }
     }
 
