@@ -1,6 +1,6 @@
 function minChange(coins, amount, memo = {}) {
-    if (amount in memo) return memo[amount];
-    if (amount === 0) return 0;
+    
+    if (amount in memo) return memo[amount];if (amount === 0) return 0;
 
     let numCoins = [];
     coins.forEach(coin => {
