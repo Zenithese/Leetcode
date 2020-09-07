@@ -21,15 +21,7 @@
 
 function maxEnvelopes(envelopes) {
 
-    for (let i = 0; i < envelopes.length; i++) {
-        for (let j = 0; j < i; j++) {
-            if (j < i && envelopes[i][0] < envelopes[j][0]) {
-                let temp = envelopes[i]
-                envelopes[i] = envelopes[j]
-                envelopes[j] = temp
-            }
-        }
-    }
+    envelopes.sort((a, b) => a[0] - b[0])
 
     let LIS = new Array(envelopes.length).fill(1)
 
