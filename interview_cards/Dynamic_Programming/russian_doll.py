@@ -4,16 +4,17 @@ def maxEnvelopes(envelopes, doll = None, memo = {}, count = 0):
 
     if doll == None: doll = envelopes[0]
     if str(doll) in memo: return memo[str(doll)]
-    if count == length: return 0
     
-    attempts = []
+    attempts = [1]
     for i in range(length):
         if doll[0] < envelopes[i][0] and doll[1] < envelopes[i][1]:
             attempts.append(maxEnvelopes(envelopes, envelopes[i], memo, count + 1) + 1)
 
-    if len(attempts): memo[str(doll)] = max(attempts) 
-    if str(doll) in memo: return memo[str(doll)]
-    else: return 0
+        if count < length:
+            attempts.append(maxEnvelopes(envelopes, envelopes[i], memo, count + 1))
+
+    memo[str(doll)] = max(attempts) 
+    return memo[str(doll)]
 
 
 envelopes = [[5,4],[6,4],[6,7],[2,3]]
