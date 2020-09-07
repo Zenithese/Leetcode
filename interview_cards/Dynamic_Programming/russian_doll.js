@@ -24,8 +24,8 @@ function maxEnvelopes(envelopes) {
     if (!envelopes.length) return 0
 
     for (let i = 0; i < envelopes.length; i++) {
-        for (let j = i + 1; j < envelopes.length; j++) {
-            if (i < j && envelopes[i][0] > envelopes[j][0]) {
+        for (let j = 0; j < i; j++) {
+            if (j < i && envelopes[i][0] < envelopes[j][0]) {
                 let temp = envelopes[i]
                 envelopes[i] = envelopes[j]
                 envelopes[j] = temp
