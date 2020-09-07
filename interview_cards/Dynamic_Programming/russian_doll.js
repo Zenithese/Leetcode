@@ -21,8 +21,6 @@
 
 function maxEnvelopes(envelopes) {
 
-    if (!envelopes.length) return 0
-
     for (let i = 0; i < envelopes.length; i++) {
         for (let j = 0; j < i; j++) {
             if (j < i && envelopes[i][0] < envelopes[j][0]) {
@@ -33,19 +31,17 @@ function maxEnvelopes(envelopes) {
         }
     }
 
-    let LIS = new Array(envelopes.length).fill(1).map((_, i)=>[envelopes[i]])
+    let LIS = new Array(envelopes.length).fill(1)
 
     for (let i = 0; i < envelopes.length; i++) {
         for (let j = 0; j < i; j++) {
             if (envelopes[j][0] < envelopes[i][0] && envelopes[j][1] < envelopes[i][1]) {
-                LIS[i] = LIS[i].length < LIS[j].length + 1 ? [...LIS[j], envelopes[i]] : LIS[i]
+                LIS[i] = Math.max(LIS[i], LIS[j] + 1)
             }
         }
     }
 
-    LIS = LIS.map(lis => lis.length)
-
-    return Math.max(...LIS)
+    return envelopes.length ? Math.max(...LIS) : 0
     
 }
 
