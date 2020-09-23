@@ -32,7 +32,7 @@ class NumMatrix {
 
         return dp[row2 + 1][col2 + 1] - dp[row1][col2 + 1] - dp[row2 + 1][col1] + dp[row1][col1]
 
-    }
+    } // leetcode with get a runtime error if you construct the dp array outsie the contructor, presumably because it is timing the function and not the entire class
 
 }
 
