@@ -39,12 +39,11 @@ class NumMatrix {
 class DpNumMatrix {
     constructor(matrix) {
         if (matrix == null || matrix.length === 0 || matrix[0].length === 0) return;
-        this.data = matrix
-        this.dp = new Array(this.data.length + 1).fill(0).map(row => new Array(this.data[0].length + 1).fill(0))
+        this.dp = new Array(matrix.length + 1).fill(0).map(row => new Array(matrix[0].length + 1).fill(0))
 
         for (let row = 1; row < this.dp.length; row++) {
             for (let col = 1; col < this.dp[0].length; col++) {
-                this.dp[row][col] = this.data[row - 1][col - 1] + this.dp[row][col - 1] + this.dp[row - 1][col] - this.dp[row - 1][col - 1]
+                this.dp[row][col] = matrix[row - 1][col - 1] + this.dp[row][col - 1] + this.dp[row - 1][col] - this.dp[row - 1][col - 1]
             }
         }
 
