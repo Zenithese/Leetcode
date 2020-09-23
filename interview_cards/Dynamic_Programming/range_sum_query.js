@@ -54,8 +54,8 @@ class DpNumMatrix {
         return this.dp[row2 + 1][col2 + 1] - this.dp[row1][col2 + 1] - this.dp[row2 + 1][col1] + this.dp[row1][col1]
 
     }
-} // Runtime: 92 ms, faster than 99.57% of JavaScript online submissions for Range Sum Query 2D - Immutable.
-  // Memory Usage: 40.6 MB, less than 64.78 % of JavaScript online submissions for Range Sum Query 2D - Immutable.
+} // Runtime: 84 ms, faster than 100.00 % of JavaScript online submissions for Range Sum Query 2D - Immutable.
+  // Memory Usage: 40.7 MB, less than 62.61 % of JavaScript online submissions for Range Sum Query 2D - Immutable.
 
 let matrix = [
     [3, 0, 1, 4, 2],
