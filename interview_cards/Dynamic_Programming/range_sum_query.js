@@ -40,7 +40,6 @@ class DpNumMatrix {
     constructor(matrix) {
         if (matrix == null || matrix.length === 0 || matrix[0].length === 0) return;
         this.dp = new Array(matrix.length + 1).fill(0).map(row => new Array(matrix[0].length + 1).fill(0))
-
         for (let row = 1; row < this.dp.length; row++) {
             for (let col = 1; col < this.dp[0].length; col++) {
                 this.dp[row][col] = matrix[row - 1][col - 1] + this.dp[row][col - 1] + this.dp[row - 1][col] - this.dp[row - 1][col - 1]
@@ -50,9 +49,7 @@ class DpNumMatrix {
     }
 
     sumRegion(row1, col1, row2, col2) {
-
         return this.dp[row2 + 1][col2 + 1] - this.dp[row1][col2 + 1] - this.dp[row2 + 1][col1] + this.dp[row1][col1]
-
     }
 } // Runtime: 84 ms, faster than 100.00 % of JavaScript online submissions for Range Sum Query 2D - Immutable.
   // Memory Usage: 40.7 MB, less than 62.61 % of JavaScript online submissions for Range Sum Query 2D - Immutable.
