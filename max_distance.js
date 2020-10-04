@@ -19,8 +19,10 @@ var maxDistanceOptimized = function (arrays) {
     let min = arrays[0][0];
     let max = arrays[0][arrays[0].length - 1];
     for (var i = 1; i < arrays.length; i++) {
+        
         let first = arrays[i][0];
         let last = arrays[i][arrays[i].length - 1];
+
         result = Math.max(
             result,
             Math.max(
@@ -28,8 +30,10 @@ var maxDistanceOptimized = function (arrays) {
                 Math.abs(max - first)
             )
         );
+
         min = Math.min(min, first);
         max = Math.max(max, last);
+        
     }
 
     return result;
