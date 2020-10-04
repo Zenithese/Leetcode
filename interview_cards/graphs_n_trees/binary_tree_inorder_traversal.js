@@ -1,20 +1,14 @@
-var inorderTraversal = function (root) {
-    const result = []
+var inorderTraversal = function (root, result = []) {
 
-    var helper = (root) => {
+    if (root) {
 
-        if (root) {
-
-            if (root.left) helper(root.left)
-            result.push(root.val)
-            if (root.right) helper(root.right)
-
-        }
+        if (root.left) inorderTraversal(root.left, result)
+        result.push(root.val)
+        if (root.right) inorderTraversal(root.right, result)
 
     }
 
-    helper(root)
     return result
-    
-}; // Runtime: 80 ms, faster than 40.82 % of JavaScript online submissions for Binary Tree Inorder Traversal.
-   // Memory Usage: 39 MB, less than 5.16 % of JavaScript online submissions for Binary Tree Inorder Traversal.
+
+}; // Runtime: 72 ms, faster than 86.00% of JavaScript online submissions for Binary Tree Inorder Traversal.
+   // Memory Usage: 38.9 MB, less than 5.16 % of JavaScript online submissions for Binary Tree Inorder Traversal.
