@@ -23,12 +23,14 @@ var tooSlowLastStoneWeightII = function (stones, memo = {}) {
     return memo[weight];
 };
 
+
 var destructiveLastStoneWeightII = function (stones, memo = {}, sum = 0) {
     if (stones.length === 0) return Math.abs(sum);
     const copy = stones.slice(), key = `${stones}-${sum}`, stone = copy.shift();
     if (!(key in memo)) memo[key] = Math.min(lastStoneWeightII(copy, memo, sum + stone), lastStoneWeightII(copy, memo, sum - stone));
     return memo[key]
 };
+
 
 var lastStoneWeightII = function (stones, memo = {}, sum = 0, idx = 0) {
     if (stones.length === idx) return Math.abs(sum);
