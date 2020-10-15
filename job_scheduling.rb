@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/maximum-profit-in-job-scheduling/submissions/
 
-# Runtime: 176 ms, faster than 86.96% of Ruby online submissions for Maximum Profit in Job Scheduling.
-# Memory Usage: 228.6 MB, less than 8.70% of Ruby online submissions for Maximum Profit in Job Scheduling.
+# Runtime: 164 ms, faster than 91.30% of Ruby online submissions for Maximum Profit in Job Scheduling.
+# Memory Usage: 228.8 MB, less than 8.70% of Ruby online submissions for Maximum Profit in Job Scheduling.
 
 def job_scheduling(start_time, end_time, profit)
 
@@ -36,7 +36,7 @@ def dp_helper(schedule)
 
     dp = Array.new(schedule.length).fill(0)
 
-    (0...schedule.length).each do |shift|
+    for shift in 0...schedule.length
         
         profit = schedule[shift][:profit]
 
