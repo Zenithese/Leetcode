@@ -10,6 +10,7 @@
     //     ["1", "0", "0", "1", "0"]
     // ]
     // Output: 6
+    
 var maximalRectangle = function (matrix) {
 
     if (matrix.length === 0) return 0; if (matrix.length <= 1 && matrix[0].length === 1) return matrix[0][0]
