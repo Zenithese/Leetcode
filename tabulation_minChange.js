@@ -1,6 +1,5 @@
 function minChange(coins, amount) {
     let table = new Array(amount + 1).fill(Infinity);
-    console.log(table.length)
     table[0] = 0
 
     coins.forEach(coin => {
@@ -9,13 +8,11 @@ function minChange(coins, amount) {
                 remainder = amt - qty * coin;
                 let attempt = table[remainder] + qty
                 if (attempt < table[amt]) table[amt] = attempt;
-                console.log(table)
             }
         }
     });
 
     return table[table.length - 1];
-    // return table
 }
 
 console.log(minChange([1, 2, 5], 11))
