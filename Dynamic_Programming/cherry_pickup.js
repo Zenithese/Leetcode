@@ -19,6 +19,7 @@
     [1, 1, 1]
 ]
 // Output: 5
+
 // Explanation:
 // The player started at(0, 0) and went down, down, right right to reach(2, 2).
 // 4 cherries were picked up during this single trip, and the matrix becomes[[0, 1, -1], [0, 0, -1], [0, 0, 0]].
