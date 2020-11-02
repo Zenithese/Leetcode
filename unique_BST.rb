@@ -22,26 +22,18 @@ end
 
 def make_tree(tree)
 
-    def contruct(node, value)
-        if(value > node.value)
-            if(node.right)
-                contruct(node.right, value)
-            else
-                node.right = BST.new(value)
-            end
-        else
-            if(node.left)
-                contruct(node.left, value)
-            else
-                node.left = BST.new(value)
-            end
-        end
-    end
-
     root = BST.new(tree.shift);
     tree.each{|e| contruct(root, e) }
     root
 
+end
+
+def contruct(node, value)
+    if(value > node.value)
+        node.right ? contruct(node.right, value) : node.right = BST.new(value)
+    else
+        node.left ? contruct(node.left, value) : node.left = BST.new(value)
+    end
 end
 
 def count_nodes(tree)
