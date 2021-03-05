@@ -22,4 +22,30 @@ var threeSum = function (nums, sorted = nums.sort((a, b) => a - b)) {
     return output
 };
 
+var _threeSum = function (nums) {
+    const output = [];
+    const cache = new Set();
+
+    nums.sort((a, b) => a - b);
+    for (let i = 0; i < nums.length - 2; i++) {
+        for (let j = i + 1; j < nums.length - 1; j++) {
+            for (let k = nums.length - 1; k > j; k--) {
+                // while (j < k && nums[j] === nums[j + 1]) j += 1;
+                // while (j < k && nums[k] === nums[k - 1]) k -= 1;
+                if (nums[i] + nums[j] + nums[k] == 0) {
+                    const sum = [nums[i], nums[j], nums[k]];
+                    const entry = sum.join('-')
+                    if (!cache.has(entry)) {
+                        cache.add(entry);
+                        output.push(sum);
+                    }
+                }
+            }
+        }
+    }
+
+    return output;
+};
+
 console.log(threeSum([-1, 0, 1, 2, -1, -4]))
+console.log(_threeSum([-1, 0, 1, 2, -1, -4]))
