@@ -1,3 +1,6 @@
+// Runtime: 440 ms, faster than 12.75 % of JavaScript online submissions for 4Sum.
+// Memory Usage: 40.3 MB, less than 81.46 % of JavaScript online submissions for 4Sum.
+
 var fourSum = function (nums, target) {
     const output = [];
     const cache = new Set();
