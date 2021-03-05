@@ -9,9 +9,9 @@ var fourSum = function (nums, target) {
                 for (let l = k + 1; l < nums.length; l++) {
                     if (nums[i] + nums[j] + nums[k] + nums[l] == target) {
                         const sum = [nums[i], nums[j], nums[k], nums[l]];
-                        const entry = sum.join('-')
-                        if (!cache.has(entry)) {
-                            cache.add(entry);
+                        const value = sum.join('-')
+                        if (!cache.has(value)) {
+                            cache.add(value);
                             output.push(sum);
                         }
                     }
