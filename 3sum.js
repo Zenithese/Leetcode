@@ -2,7 +2,7 @@ var threeSum = function (nums, sorted = nums.sort((a, b) => a - b)) {
     const output = []
     for (let i = 0; i < sorted.length - 2; i++) {
         if (sorted[i] > 0) break;
-        if (i >= 0 && sorted[i] === sorted[i - 1]) continue;
+        if (i > 0 && sorted[i] === sorted[i - 1]) continue;
         let left = i + 1;
         let right = sorted.length - 1;
         while (left < right) {
