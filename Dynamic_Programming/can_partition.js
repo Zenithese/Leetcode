@@ -1,6 +1,5 @@
-// Runtime: 104 ms, faster than 94.32 % of JavaScript online submissions for Partition Equal Subset Sum.
-// Memory Usage: 40.8 MB, less than 89.66 % of JavaScript online submissions for Partition Equal Subset Sum.
-
+// Runtime: 100 ms, faster than 96.12 % of JavaScript online submissions for Partition Equal Subset Sum.
+// Memory Usage: 40.7 MB, less than 89.66 % of JavaScript online submissions for Partition Equal Subset Sum.
 
 var canPartition = function (nums) {
     nums.sort((a, b) => a - b)
@@ -11,9 +10,9 @@ var canPartition = function (nums) {
     if (greatest > target) return false;
     if (greatest === target) return true;
 
-    let cache = new Array(target + 1).fill(false); cache[0] = true;
+    const cache = new Array(target + 1).fill(false); cache[0] = true;
 
-    for (let num of nums) {
+    for (const num of nums) {
         for (let i = target; i >= num; i--) {
             cache[i] = cache[i] || cache[i - num];
         }
