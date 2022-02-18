@@ -73,16 +73,24 @@ const fetch = require("node-fetch");
 
 // spotifyFetch().then(res => console.log(res))
 
-(async function () {
-    const response = await fetch("https://accounts.spotify.com/api/token", {
-        method: 'POST',
-        data: "grant_type=client_credentials",
-        headers: {
-            "Authorization": `Basic ${Buffer.from("9fe5c93dc480474bb1cfd78b914acb43:3b4f756a6316421da421beec69af9d55").toString("base64")}`
-            // "Authorization": `Basic ${Buffer.from("9fe5c93dc480474bb1cfd78b914acb43").toString("base64")}:${Buffer.from("3b4f756a6316421da421beec69af9d55").toString("base64")}`
-        }
-    })
-    if (!response.ok)
-        throw new Error(`An error has occured: ${response.status}`);
+// (async function () {
+//     const response = await fetch("https://accounts.spotify.com/api/token", {
+//         method: 'POST',
+//         data: "grant_type=client_credentials",
+//         headers: {
+//             "Authorization": `Basic ${Buffer.from("9fe5c93dc480474bb1cfd78b914acb43:3b4f756a6316421da421beec69af9d55").toString("base64")}`
+//             // "Authorization": `Basic ${Buffer.from("9fe5c93dc480474bb1cfd78b914acb43").toString("base64")}:${Buffer.from("3b4f756a6316421da421beec69af9d55").toString("base64")}`
+//         }
+//     })
+//     if (!response.ok)
+//         throw new Error(`An error has occured: ${response.status}`);
+//     return await response.json()
+// })().then(res => console.log(res)).catch(e => console.log(e.message))
+
+(async function() {
+    const response = await fetch('https://gorest.co.in/public/v2/posts')
+    if (!response.ok) throw new Error(`An error has occured: ${response.status}`);
     return await response.json()
-})().then(res => console.log(res)).catch(e => console.log(e.message))
+})()
+    .then(res => console.log(res.map(({id, title}) => ({ [id]: title }))))
+    .catch(e => console.log(e.message))
