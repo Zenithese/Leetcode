@@ -8,8 +8,8 @@ var updateMatrix = function (mat) {
         for (let j = 0; j < mat[0].length; j++) {
             if (mat[i][j] === 0) continue;
             dp[i][j] = Math.min(
-                i > 0 ? dp[i - 1][j] : Infinity,
-                j > 0 ? dp[i][j - 1] : Infinity
+                i > 0 ? dp[i - 1][j] : Infinity, // up
+                j > 0 ? dp[i][j - 1] : Infinity  // left
             ) + 1;
         };
     };
@@ -19,8 +19,8 @@ var updateMatrix = function (mat) {
             if (mat[i][j] === 0) continue;
             dp[i][j] = Math.min(
                 Math.min(
-                    i < mat.length - 1 ? dp[i + 1][j] : Infinity,
-                    j < mat[0].length - 1 ? dp[i][j + 1] : Infinity
+                    i < mat.length - 1 ? dp[i + 1][j] : Infinity, // down
+                    j < mat[0].length - 1 ? dp[i][j + 1] : Infinity // right
                 ) + 1,
                 dp[i][j]
             );
