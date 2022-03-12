@@ -26,8 +26,8 @@ var isValid = function (s) {
     return !Boolean(s.length)
 };
 
-// Runtime: 68 ms
-// Memory Usage: 48.1 MB
+// Runtime: 56 ms, faster than 98.52 % of JavaScript online submissions for Valid Parentheses.
+// Memory Usage: 47.8 MB, less than 5.65 % of JavaScript online submissions for Valid Parentheses.
 
 const brackets = {
     ")": "(",
