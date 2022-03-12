@@ -26,14 +26,14 @@ var isValid = function(s) {
     return !Boolean(s.length)
 };
 
+// Runtime: 68 ms
+// Memory Usage: 48.1 MB
+
 const brackets = {
     ")": "(",
     "}": "{",
     "]": "["
 };
-
-// Runtime: 68 ms
-// Memory Usage: 48.1 MB
 
 var isValid = function (s) {
     if (s.length & 1) return false;
