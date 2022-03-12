@@ -1,28 +1,28 @@
-// Runtime: 70 ms, faster than 80.41 % of JavaScript online submissions for Valid Parentheses.
-// Memory Usage: 47.9 MB, less than 5.29 % of JavaScript online submissions for Valid Parentheses.
+// Runtime: 56 ms, faster than 98.52 % of JavaScript online submissions for Valid Parentheses.
+// Memory Usage: 48.2 MB, less than 5.05 % of JavaScript online submissions for Valid Parentheses.
 
-var isValid = function(s) {
+var isValid = function (s) {
     if (s.length & 1) return false;
-    
-    for (i = 0; i < s.length; i++) {
-        
+
+    for (i = 1; i < s.length; i++) {
+
         if (s[i] === ')' && s[i - 1] === '(') {
             s = s.slice(0, i - 1) + s.slice(i + 1, s.length)
-            i -= 3
+            i -= 2
         }
-        
+
         if (s[i] === '}' && s[i - 1] === '{') {
             s = s.slice(0, i - 1) + s.slice(i + 1, s.length)
-            i -= 3
+            i -= 2
         }
-        
+
         if (s[i] === ']' && s[i - 1] === '[') {
             s = s.slice(0, i - 1) + s.slice(i + 1, s.length)
-            i -= 3
-        }    
-        
+            i -= 2
+        }
+
     }
-    
+
     return !Boolean(s.length)
 };
 
