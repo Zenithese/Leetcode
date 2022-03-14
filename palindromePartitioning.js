@@ -1,10 +1,10 @@
-// Runtime: 460 ms, faster than 30.70 % of JavaScript online submissions for Palindrome Partitioning.
-// Memory Usage: 61.7 MB, less than 99.46 % of JavaScript online submissions for Palindrome Partitioning.
+// Runtime: 449 ms, faster than 33.75 % of JavaScript online submissions for Palindrome Partitioning.
+// Memory Usage: 86.1 MB, less than 28.01 % of JavaScript online submissions for Palindrome Partitioning.
 
 var partition = function (s) {
     const pars = []
     function backtrack(s, par = []) {
-        const clone = JSON.parse(JSON.stringify(par))
+        const clone = [...par]
         if (!s.length && clone.every(sub => sub == sub.split('').reverse().join(''))) pars.push(clone);
         for (let i = 1; i <= s.length; i++) {
             const sub = s.slice(0, i);
