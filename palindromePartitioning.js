@@ -17,15 +17,15 @@ var partition = function (s) {
     return pars
 };
 
-// Runtime: 361 ms, faster than 66.25 % of JavaScript online submissions for Palindrome Partitioning.
-// Memory Usage: 86.6 MB, less than 26.93 % of JavaScript online submissions for Palindrome Partitioning.
+// Runtime: 232 ms, faster than 96.38 % of JavaScript online submissions for Palindrome Partitioning.
+// Memory Usage: 63.4 MB, less than 88.41 % of JavaScript online submissions for Palindrome Partitioning.
 
 var partition = function (s) {
     const pars = [];
     const memo = {};
     function isPalindrome(sub) {
         if (memo[sub]) return true;
-        return memo[sub] = sub == sub.split('').reverse().join('')
+        return memo[sub] = sub == sub.split('').reverse().join('');
     }
     function backtrack(s, par = []) {
         const clone = [...par]
@@ -39,6 +39,6 @@ var partition = function (s) {
             clone.pop();
         }
     }
-    backtrack(s)
-    return pars
+    backtrack(s);
+    return pars;
 };
