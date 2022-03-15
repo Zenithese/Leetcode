@@ -11,5 +11,21 @@ var change = function (amount, coins, memo = {}) {
     return memo[key] = total;
 };
 
+// Runtime: 60 ms, faster than 99.43 % of JavaScript online submissions for Coin Change 2.
+// Memory Usage: 42.7 MB, less than 57.17 % of JavaScript online submissions for Coin Change 2.
+
+var dpChange = function (amount, coins) {
+    dp = new Array(amount + 1).fill(0); dp[0] = 1;
+
+    coins.forEach(coin => {
+        for (let amt = coin; amt <= amount; amt++) {
+            dp[amt] = dp[amt - coin] + dp[amt];
+        }
+    })
+
+    return dp[amount];
+};
+
 const amount = 5, coins = [1, 2, 5]
-console.log(change(amount, coins))
+console.log(change(amount, coins)) // => 4
+console.log(dpChange(amount, coins)) // => 4
